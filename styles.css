@@ -1,5 +1,5 @@
 *{
-    outline: dotted 1px red;
+    /* outline: dotted 1px red; */
     box-sizing: border-box;
 }
 
@@ -11,7 +11,7 @@ display: flex;
     margin: auto;
     flex-direction: column;
     background-color: salmon;
-    /* padding: 2em; */
+    padding: 2em;
     border-radius: 6px;
 }
 
@@ -22,9 +22,19 @@ display: flex;
     margin-bottom: 0.5em;
 }
 
+#entry{
+    display: flex;
+    justify-content: space-evenly;
+}
 #grid-input{
     width: 30%;
     text-align: center;
+    box-shadow: -2px 2px 10px gray;
+}
+
+#entry button {
+    padding: 5px 20px 5px 20px;
+    box-shadow: 2px 2px 10px gray;
 }
 
 #sketch-zone {
