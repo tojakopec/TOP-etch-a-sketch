@@ -23,6 +23,81 @@
       <h2 id="warning">Grid size must be between 1 and 200!</h2>
     </div>
     <div id="sketch-zone-wrapper">
+      <div id="mode-selection">
+        <form>
+          <fieldset id="color-mode">
+            <legend>Sketch Color</legend>
+            <div class="inputAndLabelWrapper">
+              <input
+                class="modeRadio"
+                type="radio"
+                id="radioBlack"
+                name="mode"
+                value="black"
+                checked="checked"
+              />
+              <label for="radioBlack">Black</label>
+            </div>
+            <div class="inputAndLabelWrapper">
+              <input
+                class="modeRadio"
+                type="radio"
+                id="radioPick"
+                name="mode"
+                value="pickColor"
+              />
+              <label for="radioPick">Select Color</label>
+              <input
+                class="modeRadio"
+                type="color"
+                name="mode"
+                id="selectedColor"
+                value="#000000"
+              />
+            </div>
+            <div class="inputAndLabelWrapper">
+              <input
+                class="modeRadio"
+                type="radio"
+                id="radioRandom"
+                name="mode"
+                value="random"
+              />
+              <label for="radioRandom">Random RGB</label>
+            </div>
+          </fieldset>
+          <fieldset id="color-settings">
+            <legend>Color Settings</legend>
+            <div class="inputAndLabelWrapper">
+              <input
+                type="checkbox"
+                id="checkboxProgressive"
+                name="progressiveMode"
+                value="progressive"
+              />
+              <label for="checkboxProgressive">Progressive</label>
+            </div>
+            <div class="inputAndLabelWrapper">
+              <input
+                type="checkbox"
+                id="checkboxOnClick"
+                name="fillOnClick"
+                value="fillOnClick"
+              />
+              <label for="checkboxOnClick">Fill on Click</label>
+            </div>
+            <div class="inputAndLabelWrapper">
+              <input
+                type="checkbox"
+                id="checkboxOnHover"
+                name="fillOnHover"
+                value="fillOnHover"
+              />
+              <label for="checkboxOnHover">Fill on Hover</label>
+            </div>
+          </fieldset>
+        </form>
+      </div>
       <div id="sketch-zone"></div>
     </div>
   </body>
