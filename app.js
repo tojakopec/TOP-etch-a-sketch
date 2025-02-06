@@ -4,7 +4,6 @@ const padHeight = sketchPad.offsetHeight;
 let gridSize = document
   .getElementById("grid-size-input")
   .placeholder.split(": ")[1];
-console.log(parseInt(gridSize));
 let pixelBox = document.createElement("div");
 pixelBox.className = "pixel";
 
@@ -37,6 +36,13 @@ adjustButton.addEventListener("click", function () {
 });
 
 function populateAndListen() {
+  clearPad();
   populatePad();
   listenForMouse();
 }
+
+function clearPad() {
+  sketchPad.innerHTML = "";
+}
+
+populateAndListen();

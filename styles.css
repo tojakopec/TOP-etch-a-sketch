@@ -6,13 +6,17 @@
 body {
   display: flex;
   flex-direction: column;
+  background-color: antiquewhite;
 }
 
 #ui-zone {
   margin: auto;
+  display: flex;
   flex-direction: column;
   background-color: salmon;
-  padding: 2em;
+  margin-top: 1em;
+  padding: 1em 2em;
+  border: 2px solid darkslategray;
   border-radius: 6px;
 }
 
@@ -20,12 +24,14 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   font-size: 24px;
-  margin-bottom: 0.5em;
+  margin: 0;
 }
 
 #settings {
   display: flex;
+  gap: 1em;
   justify-content: space-evenly;
+  margin: auto;
 }
 #grid-input {
   width: 30%;
@@ -38,13 +44,22 @@ body {
   box-shadow: 2px 2px 10px gray;
 }
 
+#sketch-zone-wrapper {
+  padding: 2em;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  background-color: salmon;
+  margin-top: 10%;
+  border: 1px solid darkslategray;
+  border-radius: 2em;
+}
+
 #sketch-zone {
   width: 500px;
   height: 500px;
   outline: 2px solid silver;
   margin: auto;
-  margin-top: 10%;
-  margin-bottom: 5%;
   display: flex;
   flex-flow: wrap;
   justify-content: flex-start;
