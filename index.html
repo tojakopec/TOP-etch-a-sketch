@@ -11,9 +11,16 @@
     <div id="ui-zone">
       <p>Enter size of grid:</p>
       <div id="settings">
-        <input id="grid-size-input" placeholder="default: 16" ="numeric" />
-        <span><button id="size-button">Adjust</button></span>
+        <input
+          id="grid-size-input"
+          min="1"
+          max="200"
+          placeholder="default: 16"
+          type="numeric"
+        />
+        <span><button id="size-button" type="submit">Adjust</button></span>
       </div>
+      <h2 id="warning">Grid size must be between 1 and 200!</h2>
     </div>
     <div id="sketch-zone-wrapper">
       <div id="sketch-zone"></div>

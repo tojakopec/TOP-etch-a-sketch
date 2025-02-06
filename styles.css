@@ -13,6 +13,7 @@ body {
   margin: auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: salmon;
   margin-top: 1em;
   padding: 1em 2em;
@@ -69,4 +70,13 @@ body {
 .pixel {
   background-color: white;
   flex-grow: 1;
+}
+
+#warning {
+  color: aliceblue;
+  background-color: red;
+  padding: 0 0.5em;
+  border-radius: 1em;
+  font-family: "Courier New", Courier, monospace;
+  visibility: hidden;
 }
