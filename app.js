@@ -1,45 +1,42 @@
-const sketchPad = document.querySelector("#sketch-zone");
+const sketchPad = document.getElementById("sketch-zone");
 const padWidth = sketchPad.offsetWidth;
 const padHeight = sketchPad.offsetHeight;
-const userInputNumber = document.querySelector("#grid-input");
-let gridSize = userInputNumber.value;
+let gridSize = document
+  .getElementById("grid-size-input")
+  .placeholder.split(": ")[1];
+console.log(parseInt(gridSize));
+let pixelBox = document.createElement("div");
+pixelBox.className = "pixel";
 
-
-
-// console.log(`Width: ${padWidth} | Height: ${padHeight}`);
-
-
-//
-function populatePad(){
-    let pixelDimensions = Math.floor(10*padWidth / gridSize) / 10;
-    console.log(pixelDimensions);
-    for (let i = 0; i < gridSize * gridSize; i++){
-        pixelBox = document.createElement('div');
-        pixelBox.className = 'pixel';
-        pixelBox.setAttribute('id', i);
-        pixelBox.style.width = pixelDimensions + "px";
-        pixelBox.style.height = pixelDimensions + "px";
-        sketchPad.appendChild(pixelBox);
-    }
+function populatePad() {
+  let pixelDimensions = Math.floor((10 * padWidth) / gridSize) / 10;
+  for (let i = 0; i < gridSize * gridSize; i++) {
+    const newPixel = pixelBox.cloneNode(true);
+    newPixel.setAttribute("id", i);
+    newPixel.style.width = pixelDimensions + "px";
+    newPixel.style.height = pixelDimensions + "px";
+    sketchPad.appendChild(newPixel);
+  }
 }
 
-function listenForMouse(){
-    let pixelBoxes = document.getElementsByClassName('pixel');
-    for (let i = 0; i < gridSize * gridSize; i++){
-        pixelBoxes[i].addEventListener('mouseover', function(){
-            pixelBoxes[i].style.background = "black";
-            console.log(i);
-        })
-    }
+function listenForMouse() {
+  let pixelBoxes = document.getElementsByClassName("pixel");
+  for (let i = 0; i < gridSize * gridSize; i++) {
+    pixelBoxes[i].addEventListener("mouseover", function () {
+      pixelBoxes[i].style.background = "black";
+    });
+  }
 }
 
-populatePad();
-listenForMouse();
+const adjustButton = document.getElementById("size-button");
 
-const adjustButton = document.getElementById('size-button');
-
-adjustButton.addEventListener('click', function(){
-    window.location.reload();
-    console.log("Hello!");
+adjustButton.addEventListener("click", function () {
+  const userInput = document.getElementById("grid-size-input").value;
+  gridSize = parseInt(userInput);
+  populateAndListen();
 });
 
+function populateAndListen() {
+  populatePad();
+  listenForMouse();
+}
