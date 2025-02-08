@@ -7,6 +7,9 @@ const colorPicker = document.getElementById("selectedColor");
 const colorPickerRadio = document.getElementById("radioPick");
 const colorModeRadios = document.querySelectorAll('input[name="mode"]');
 const fillSettingRadios = document.querySelectorAll('input[name="fillMode"]');
+const progressiveCheckbox = document.getElementById("checkboxProgressive");
+
+let progressive = progressiveCheckbox.checked;
 
 let selectedColorModeRadio = document.querySelector(
   'input[name="mode"]:checked'
@@ -60,6 +63,10 @@ fillSettingRadios.forEach((radio) =>
   })
 );
 
+progressiveCheckbox.addEventListener("change", () => {
+  progressive = progressiveCheckbox.checked;
+});
+
 // Listeners end
 
 function populatePad() {
@@ -73,7 +80,24 @@ function populatePad() {
   }
 }
 
+function setOpacity(pixel) {
+  if (!progressive) {
+    pixel.style.opacity = "1";
+    return;
+  }
+  if (!pixel.style.opacity) {
+    pixel.style.opacity = "0.1";
+  } else if (pixel.style.opacity >= 1) {
+    return;
+  } else {
+    let value = parseFloat(pixel.style.opacity) + 0.1;
+    pixel.style.opacity = value;
+  }
+}
+
 function colorThePixel(pixel) {
+  setOpacity(pixel);
+
   pixel.style.background = colorToUse;
   if (selectedColorModeRadio == "random") {
     randomColor();
