@@ -3,13 +3,17 @@ const padWidth = sketchPad.offsetWidth;
 const padHeight = sketchPad.offsetHeight;
 const inputField = document.getElementById("grid-size-input");
 const warningMessage = document.getElementById("warning");
-const sketchMode = ["black", "pickColor", "random"];
 const colorPicker = document.getElementById("selectedColor");
 const colorPickerRadio = document.getElementById("radioPick");
-let selectedColor = colorPicker.value;
 const colorModeRadios = document.querySelectorAll('input[name="mode"]');
+const fillSettingRadios = document.querySelectorAll('input[name="fillMode"]');
+
 let selectedColorModeRadio = document.querySelector(
   'input[name="mode"]:checked'
+).value;
+
+let selectedFillSetting = document.querySelector(
+  'input[name="fillMode"]:checked'
 ).value;
 
 let colorToUse = "black";
@@ -45,10 +49,14 @@ colorPicker.addEventListener("change", function () {
 
 colorModeRadios.forEach((radio) =>
   radio.addEventListener("click", function () {
-    selectedColorModeRadio = document.querySelector(
-      'input[name="mode"]:checked'
-    ).value;
+    selectedColorModeRadio = radio.value;
     setColor(selectedColorModeRadio);
+  })
+);
+
+fillSettingRadios.forEach((radio) =>
+  radio.addEventListener("change", function () {
+    selectedFillSetting = radio.value;
   })
 );
 
@@ -65,15 +73,36 @@ function populatePad() {
   }
 }
 
-function listenForMouse() {
+function colorThePixel(pixel) {
+  pixel.style.background = colorToUse;
+  if (selectedColorModeRadio == "random") {
+    randomColor();
+  }
+}
+
+function listenForMouseEvents() {
   let pixelBoxes = document.getElementsByClassName("pixel");
+
   for (let i = 0; i < gridSize * gridSize; i++) {
     pixelBoxes[i].addEventListener("mouseover", function () {
-      pixelBoxes[i].style.background = colorToUse;
-      if (selectedColorModeRadio == "random") {
-        randomColor();
+      if (selectedFillSetting == "fillOnHover") {
+        colorThePixel(pixelBoxes[i]);
       }
     });
+    pixelBoxes[i].addEventListener("click", function () {
+      if (selectedFillSetting == "fillOnClick") {
+        colorThePixel(pixelBoxes[i]);
+      }
+    });
+  }
+}
+
+function colorOnMouseOver(pixel) {
+  if (selectedFillSetting == "fillOnHover") {
+    pixel.style.background = colorToUse;
+    if (selectedColorModeRadio == "random") {
+      randomColor();
+    }
   }
 }
 
@@ -97,7 +126,7 @@ function randomColor() {
 function populateAndListen() {
   clearPad();
   populatePad();
-  listenForMouse();
+  listenForMouseEvents();
 }
 
 function clearPad() {
