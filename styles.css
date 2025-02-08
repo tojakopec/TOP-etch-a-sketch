@@ -22,10 +22,10 @@ body {
 }
 
 #ui-zone p {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Courier New", Courier, monospace;
   font-weight: bold;
   font-size: 24px;
-  margin: 0;
+  margin-bottom: 0.5em;
 }
 
 #settings {
@@ -66,6 +66,7 @@ body {
   flex-flow: wrap;
   justify-content: flex-start;
   align-content: flex-start;
+  background-color: white;
 }
 
 .pixel {
@@ -79,6 +80,8 @@ body {
   padding: 0 0.5em;
   border-radius: 1em;
   font-family: "Courier New", Courier, monospace;
+  font-weight: 400;
+  font-size: 1em;
   visibility: hidden;
 }
 
